@@ -14,7 +14,8 @@ Rather than selecting a specific license per repository, I did some research and
 
 I provided more expansive error handling on the original authentication and request that gets a list of repositories. I took steps to try and succesfully make a request if the original request failed for some reason. With the later API calls for each individual Repository, I didn't do any handling for a timed out request other than notifying the user. I don't know what kind of error handling is custom for BYU OIT, but my code could be modified to log errors in an external file, or email someone when a process fails. To the best of my knowledge, no error should go unhandled, but any unexpected errors will result.
 
-##Here are some other assumptions that i am working under:
-*The repository must have a master branch (Though I can't think of a case this wouldn't be true)
-*Private and Public repositories respond the same (My free organization I tested on didn't have the ability to create private repos)
+## Here are some other assumptions that i am working under:
+* The repository must have a master branch (Though I can't think of a case this wouldn't be true)
+* Private and Public repositories respond the same (My free organization I tested on didn't have the ability to create private repos)
+* All my files are present (If any of the text files I provided are missing, my code will fail)
 
