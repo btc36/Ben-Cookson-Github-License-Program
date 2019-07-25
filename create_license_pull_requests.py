@@ -20,8 +20,8 @@ add_license_branch_ref = "refs/heads/{}".format(add_license_branch)
 pull_request_title = "Add a MIT License"
 pull_request_body = ''
 pull_request_base = 'master'
-license_file_path = 'LICENSE.txt'
-pull_request_body_path = 'PullRequestBody.txt'
+license_file_path = 'license_template.txt'
+pull_request_body_path = 'pull_request_body.txt'
 license_file_content = ''
 
 #Get pull request body from text file
