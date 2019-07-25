@@ -1,0 +1,5 @@
+# MIT License
+It has been recommended that a license be added to this repository.
+A [MIT license](https://choosealicense.com/licenses/mit/) has been selected by default.
+All that needs to be done to license this repository is to merge this pull request.
+If an alternate license is preferred, close this pull request and visit [choosealicense.com](https://choosealicense.com/) for further instructions.
