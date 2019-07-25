@@ -34,11 +34,11 @@ repos_url = '{}orgs/{}/repos'.format(github_url, ORGANIZATION)
 add_license_branch = 'add-license-branch'
 add_license_branch_ref = "refs/heads/{}".format(add_license_branch)
 pull_request_title = "Add a MIT License"
-pull_request_body = ''
+pull_request_body = None
 pull_request_base = 'master'
 license_file_path = 'license_template.txt'
 pull_request_body_path = 'pull_request_body.txt'
-license_file_content = ''
+license_file_content = None
 
 #Get pull request body from text file
 with open(pull_request_body_path, 'r') as file:
@@ -48,6 +48,11 @@ with open(pull_request_body_path, 'r') as file:
 # Read in the license template file
 with open(license_file_path, 'r') as file:
     filedata = file.read()
+
+#If the files weren't read in properly, the code will fail
+if not pull_request_body or not license_file_content:
+    print("Necessary text files are missing, and the request cannot be implemented")
+    sys.exit()
 
 # Customize the copyright information
 filedata = filedata.replace('@year@', str(YEAR))
@@ -66,6 +71,7 @@ timeout_count = 0;
 authenticated = False
 repos = None
 
+#Lets the user reenter password and username if needed
 while not authenticated:
     repos_request_response = my_session.get(repos_url)
     #Allow the user to re-enter username and password
@@ -170,7 +176,6 @@ for repo in repos:
 
     else:
         print("Repo {} already has a license".format(repo_name))
-
 
 
 
