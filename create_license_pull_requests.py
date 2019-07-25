@@ -49,18 +49,18 @@ with open(pull_request_body_path, 'r') as file:
 with open(license_file_path, 'r') as file:
     filedata = file.read()
 
-#If the files weren't read in properly, the code will fail
-if not pull_request_body or not license_file_content:
-    print("Necessary text files are missing, and the request cannot be implemented")
-    sys.exit()
 
 # Customize the copyright information
+license_file_content_base64 = None
 filedata = filedata.replace('@year@', str(YEAR))
 license_file_content = filedata.replace('@organization@',ORGANIZATION)
 #Github API requires file content to be base64 encoded
 license_file_content_base64 = base64.b64encode(bytes(license_file_content, 'utf-8')).decode('ascii')
 
-
+#If the files weren't read in properly, the code will fail
+if pull_request_body == None or license_file_content == None or license_file_content_base64 == None:
+    print("Necessary text files are missing, and the request cannot be implemented")
+    sys.exit()
 
 #Create a session and authorize
 my_session = requests.Session()
@@ -176,6 +176,3 @@ for repo in repos:
 
     else:
         print("Repo {} already has a license".format(repo_name))
-
-
-
